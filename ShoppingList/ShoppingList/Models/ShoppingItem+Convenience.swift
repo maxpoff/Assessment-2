@@ -16,4 +16,5 @@ extension ShoppingItem {
         self.itemName = itemName
         self.isBought = isBought
     }
+    
 }//End of extension

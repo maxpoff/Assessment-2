@@ -21,6 +21,8 @@ class ShoppingListTableViewController: UITableViewController {
         presentAlertController()
     }
     
+    //MARK: Alert Controller
+    
     func presentAlertController() {
         
         let alertController = UIAlertController(title: "Add Item", message: "Please add an item to your shopping list", preferredStyle: .alert)
@@ -41,29 +43,28 @@ class ShoppingListTableViewController: UITableViewController {
         
         present(alertController, animated: true)
     }
-
+    
     // MARK: - Table view data source
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return ShoppingItemController.shared.fetchedResultsController.sections?.count ?? 0
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return ShoppingItemController.shared.fetchedResultsController.sections?[section].numberOfObjects ?? 0
     }
-
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "itemCell", for: indexPath) as? ShoppingItemTableViewCell else {return UITableViewCell()}
-
+        
         let item = ShoppingItemController.shared.fetchedResultsController.object(at: indexPath)
         
         cell.update(shoppingItem: item)
         cell.delegate = self
-
+        
         return cell
     }
-
+    
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let itemToDelete = ShoppingItemController.shared.fetchedResultsController.object(at: indexPath)
@@ -82,7 +83,7 @@ class ShoppingListTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return view.frame.height / 12
     }
-
+    
 }//End of class
 
 extension ShoppingListTableViewController: ShoppingItemTableViewCellDelegate {

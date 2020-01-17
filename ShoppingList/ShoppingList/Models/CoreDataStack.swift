@@ -10,6 +10,7 @@ import Foundation
 import CoreData
 
 class CoreDataStack {
+    
     static let container: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "ShoppingList")
         container.loadPersistentStores() { (storeDescription, error) in
@@ -20,5 +21,5 @@ class CoreDataStack {
         return container
     }()
     static var context: NSManagedObjectContext { return container.viewContext }
+    
 }//End of class
-
