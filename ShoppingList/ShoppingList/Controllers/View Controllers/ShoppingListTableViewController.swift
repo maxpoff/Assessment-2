@@ -108,11 +108,11 @@ extension ShoppingListTableViewController: NSFetchedResultsControllerDelegate {
         switch type {
         case .insert:
             let indexSet = IndexSet(integer: sectionIndex)
-            tableView.insertSections(indexSet, with: .automatic)
+            tableView.insertSections(indexSet, with: .fade)
             
         case .delete:
             let indexSet = IndexSet(integer: sectionIndex)
-            tableView.deleteSections(indexSet, with: .automatic)
+            tableView.deleteSections(indexSet, with: .fade)
             
         default:
             fatalError()

@@ -49,7 +49,8 @@ class ShoppingItemController {
         
         let fetchRequest: NSFetchRequest<ShoppingItem> = ShoppingItem.fetchRequest()
         let isBoughtSort = NSSortDescriptor(key: "isBought", ascending: true)
-        fetchRequest.sortDescriptors = [isBoughtSort]
+        let idkSort = NSSortDescriptor(key: "itemName", ascending: true)
+        fetchRequest.sortDescriptors = [isBoughtSort, idkSort]
         
         return NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: CoreDataStack.context, sectionNameKeyPath: "isBought", cacheName: nil)
     }()
